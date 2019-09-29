@@ -106,8 +106,7 @@ int main() {
 
 
 	/* --------------------------------------- WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF -------------------------------------- */
-	// infinite while loop that will only exit when the EOF (End Of File) 
-		// of the file is reached
+	// infinite while loop that will only exit when the EOF (End Of File) of the file is reached
 	while (!feof(fileInput1)) {
 		// Call the getInput(...){...} function to read in a single line of input from the specified file and 
 			// store variables in appropriate variables
