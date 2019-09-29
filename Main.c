@@ -1,62 +1,62 @@
 #include "Football.h"
 
 
-/*******************************************************************************************************************************************
- *******************************************************************************************************************************************
- *****     Class: CSC-362-001             Semester: Fall 2019             Professor: Richard Fox             Student: Ryan Huffman     *****
- *****_________________________________________________________________________________________________________________________________*****
- *****                                        Programming Assignment #2: Predict Football Games                                        *****
- *****---------------------------------------------------------------------------------------------------------------------------------*****
- *****      This program is used to predict the outcome of football games for which the teams and strengths are stored in a File.      *****
- *****                                                                                                                                 *****
- *****                                    Each line of the Input File has 11 pieces of information:                                    *****
- *****                     1.) Home Team's City (as well as name if more than one team from that particular city)                      *****
- *****                                2.) Home Team Offense (rating of 1 - 10, with 10 being the best)                                 *****
- *****                                3.) Home Team Defense (rating of 1 - 10, with 10 being the best)                                 *****
- *****                             4.) Home Team Special Teams (rating of 1 - 10, with 10 being the best)                              *****
- *****                             5.) Home Team Home Strength (rating of 1 - 10, with 10 being the best)                              *****
- *****                          6.) Home Team Home Field Advantage (rating of 1 - 10, with 10 being the best)                          *****
- *****                    7.) Visiting Team's City (as well as name if more than one team from that particular city)                   *****
- *****                              8.) Visiting Team Offense (rating of 1 - 10, with 10 being the best)                               *****
- *****                              9.) Visiting Team Defense (rating of 1 - 10, with 10 being the best)                               *****
- *****                          10.) Visiting Team Special Teams (rating of 1 - 10, with 10 being the best)                            *****
- *****                          11.) Visiting Team Road Strength (rating of 1 - 10, with 10 being the best)                            *****
- *****---------------------------------------------------------------------------------------------------------------------------------*****
- *****                                     This program is separated into four separate Files:                                         *****
- *****                         A.) This File with the main function and include statement for the Header File                          *****
- *****          B.) A Header File that contains all function prototypes, Constants and all include statements for C libraries          *****
- *****                                      C.) A File containing all computational functions                                          *****
- *****                      D.) A File containing all I/O functions, as well as the summary(...){...} function                         *****
- *****---------------------------------------------------------------------------------------------------------------------------------*****
- *****  This program uses a while loop to loop through every line of the Input File, exiting the loop once the EOF has been reached.   *****    
- *****   Every repetition of the while loop reads in one line of input from the Input file, assigning values to respective variables   *****
- *****       and calling functions to make the needed computations to predict the final score and winner of each football game.        *****
- *****                                                                                                                                 *****
- *****                After the while loop ends and each individual game has been predicted and output to the terminal,                *****
- *****   this program will print to the terminal a summary report that includes the total number of games this session has predicted   *****
- *****                       and the percentage of those games that the Home Team has been predicted to win.                           *****
- *****---------------------------------------------------------------------------------------------------------------------------------*****
- *****                      To perform all the tasks listed above, this program needs the following functions:                         *****
- *****                      1.) main() - Where the program starts executing and where all method calls are made                        *****
- *****           2.) getInput(...) - Get the input from the Input File and assign the values to their respective variables             *****
- *****    3.) computeProtectionValue1(...) - (optional) Compute the value for  predictor1 to be used with the compute(...) function    *****
- *****    4.) computeProtectionValue2(...) - (optional) Compute the value for  predictor2 to be used with the compute(...) function    *****
- *****    5.) computeProtectionValue3(...) - (optional) Compute the value for  predictor3 to be used with the compute(...) function    *****
- *****    6.) computeProtectionValue4(...) - (optional) Compute the value for  predictor4 to be used with the compute(...) function    *****
- *****    7.) computeProtectionValue5(...) - (optional) Compute the value for  predictor5 to be used with the compute(...) function    *****
- *****                          8.) compute(...) - Compute the values needed for the getScore(...) function                            *****
- *****      9.) getScore(...) - Calculate the score differential. Which is used to predict the game winner and score differntial       *****
- *****                    10.) printOutput(...) - Print the winner and score differential for each individual game                     *****
- *****    11.) update(...) - Increment to the total number of games predicted and if the number of Home Team wins (if Home Team won)   *****
- *****                    12.) printSummary(...) - Print to the terminal the total number of games predicted and                       *****
- *****                                             the percentage of games Home Teams are predicted to win                             ***** 
- *******************************************************************************************************************************************
- *******************************************************************************************************************************************/
+/*****************************************************************************************************************************************
+ *****************************************************************************************************************************************
+ *****    Class: CSC-362-001             Semester: Fall 2019             Professor: Richard Fox             Student: Ryan Huffman    *****
+ *****_______________________________________________________________________________________________________________________________*****
+ *****                                       Programming Assignment #2: Predict Football Games                                       *****
+ *****-------------------------------------------------------------------------------------------------------------------------------*****
+ *****     This program is used to predict the outcome of football games for which the teams and strengths are stored in a File.     *****
+ *****                                                                                                                               *****
+ *****                                   Each line of the Input File has 11 pieces of information:                                   *****
+ *****                    1.) Home Team's City (as well as name if more than one team from that particular city)                     *****
+ *****                               2.) Home Team Offense (rating of 1 - 10, with 10 being the best)                                *****
+ *****                               3.) Home Team Defense (rating of 1 - 10, with 10 being the best)                                *****
+ *****                            4.) Home Team Special Teams (rating of 1 - 10, with 10 being the best)                             *****
+ *****                            5.) Home Team Home Strength (rating of 1 - 10, with 10 being the best)                             *****
+ *****                         6.) Home Team Home Field Advantage (rating of 1 - 10, with 10 being the best)                         *****
+ *****                   7.) Visiting Team's City (as well as name if more than one team from that particular city)                  *****
+ *****                             8.) Visiting Team Offense (rating of 1 - 10, with 10 being the best)                              *****
+ *****                             9.) Visiting Team Defense (rating of 1 - 10, with 10 being the best)                              *****
+ *****                         10.) Visiting Team Special Teams (rating of 1 - 10, with 10 being the best)                           *****
+ *****                         11.) Visiting Team Road Strength (rating of 1 - 10, with 10 being the best)                           *****
+ *****-------------------------------------------------------------------------------------------------------------------------------*****
+ *****                                    This program is separated into four separate Files:                                        *****
+ *****                        A.) This File with the main function and include statement for the Header File                         *****
+ *****         B.) A Header File that contains all function prototypes, Constants and all include statements for C libraries         *****
+ *****                                     C.) A File containing all computational functions                                         *****
+ *****                     D.) A File containing all I/O functions, as well as the summary(...){...} function                        *****
+ *****-------------------------------------------------------------------------------------------------------------------------------*****
+ ***** This program uses a while loop to loop through every line of the Input File, exiting the loop once the EOF has been reached.  *****    
+ *****  Every repetition of the while loop reads in one line of input from the Input file, assigning values to respective variables  *****
+ *****      and calling functions to make the needed computations to predict the final score and winner of each football game.       *****
+ *****                                                                                                                               *****
+ *****               After the while loop ends and each individual game has been predicted and output to the terminal,               *****
+ *****  this program will print to the terminal a summary report that includes the total number of games this session has predicted  *****
+ *****                      and the percentage of those games that the Home Team has been predicted to win.                          *****
+ *****-------------------------------------------------------------------------------------------------------------------------------*****
+ *****                     To perform all the tasks listed above, this program needs the following functions:                        *****
+ *****                     1.) main() - Where the program starts executing and where all method calls are made                       *****
+ *****          2.) getInput(...) - Get the input from the Input File and assign the values to their respective variables            *****
+ *****   3.) computeProtectionValue1(...) - (optional) Compute the value for  predictor1 to be used with the compute(...) function   *****
+ *****   4.) computeProtectionValue2(...) - (optional) Compute the value for  predictor2 to be used with the compute(...) function   *****
+ *****   5.) computeProtectionValue3(...) - (optional) Compute the value for  predictor3 to be used with the compute(...) function   *****
+ *****   6.) computeProtectionValue4(...) - (optional) Compute the value for  predictor4 to be used with the compute(...) function   *****
+ *****   7.) computeProtectionValue5(...) - (optional) Compute the value for  predictor5 to be used with the compute(...) function   *****
+ *****                         8.) compute(...) - Compute the values needed for the getScore(...) function                           *****
+ *****     9.) getScore(...) - Calculate the score differential. Which is used to predict the game winner and score differntial      *****
+ *****                   10.) printOutput(...) - Print the winner and score differential for each individual game                    *****
+ *****   11.) update(...) - Increment to the total number of games predicted and if the number of Home Team wins (if Home Team won)  *****
+ *****                   12.) printSummary(...) - Print to the terminal the total number of games predicted and                      *****
+ *****                                            the percentage of games Home Teams are predicted to win                            ***** 
+ *****************************************************************************************************************************************
+ *****************************************************************************************************************************************/
 
 
 int main() {
 	
-	/* ----------------------------------------------------- VARIABLE DECLARATIONS ------------------------------------------------------ */
+	/* ---------------------------------------------------- VARIABLE DECLARATIONS ----------------------------------------------------- */
 	// Character Pointer variables to store the file names
 	char* fileName1 = "football1.txt";
 	char* fileName2 = "football2.txt";
@@ -80,7 +80,7 @@ int main() {
 	// int counter variables to store the total number of games predicted and the number of predicted home team wins
 	int totalGames = 0;
 	int homeWins = 0;
-	/* ------------------------------------------------- END OF VARIABLE DECLARATIONS --------------------------------------------------- */
+	/* ------------------------------------------------ END OF VARIABLE DECLARATIONS -------------------------------------------------- */
 
 	// opening the files in read mode and assigning them to the file pointer variables
 	fileInput1 = fopen(("%c", fileName1), "r");
@@ -105,7 +105,7 @@ int main() {
 	}
 
 
-	/* -------------------------------------------- WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF ------------------------------------------- */
+	/* ------------------------------------------- WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF ------------------------------------------ */
 	// infinite while loop that will only exit when the EOF (End Of File) 
 		// of the file is reached
 	while (!feof(fileInput1)) {
@@ -131,7 +131,7 @@ int main() {
 			// depending on the results of the prediction, increment the number of home teams predicted to win
 		update(differential, &totalGames, &homeWins);
 	}
-	/* ----------------------------------------- END OF WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF --------------------------------------- */
+	/* ---------------------------------------- END OF WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF -------------------------------------- */
 
 	// Call the printSummary method to print the final line of output (total number of games predicted and 
 		// the percentage of those games the home team is predicted to win)
