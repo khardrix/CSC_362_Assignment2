@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_DEPRECATE
 #define _CRT_SECURE_NO_WARNINGS
 #include "Football.h"
+#include <FootballComputation.c>
+#include <Football_IO.c>
 
 /*******************************************************************************************************************************************
  *******************************************************************************************************************************************
@@ -120,7 +122,8 @@ int main() {
 		compute(htOffense, htDefense, htSpecialTeams, htHomeSTR, htHomeADV, vtOffense, vtDefense, vtSpecialTeams, vtRoadSTR, 
 			&predictor1, &predictor2, &predictor3, &predictor4, &predictor5);
 
-		// Call the getScore(...){...} function to calculate the score differential and store that value in the int variable, differential
+		// Call the getScore(...){...} function to calculate the score differential and 
+			// store that value in the int variable, differential
 		differential = getScore(predictor1, predictor2, predictor3, predictor4, predictor5);
 
 		// Call the printOutput(...){...} function to print out the results of the prediction for the particular game
@@ -145,13 +148,13 @@ int main() {
 	return 0;
 }
 
-
+/*
 // This function gets one line of input from the football file currently being read, about individual games (one line of input per game)
 void getInput(FILE* fp, char* htn, int* hto, int* htd, int* hts, int* hth, int* hfa, char* vtn, int* vto, int* vtd, int* vts, int* vtr) {
 	fscanf(fp, "%s %d %d %d %d %d %s %d %d %d %d", htn, hto, htd, hts, hth, hfa, vtn, vto, vtd, vts, vtr);
 }
-
-
+*/
+/*
 // function for use in conjunction with the compute(...){...} function. 
 	// This function calculates the value of the double variable, predictor1
 double computePredictionValue1(int htOffense, int vtDefense) {
@@ -208,8 +211,8 @@ int getScore(double predictor1, double predictor2, double predictor3, double pre
 	double difference = ((predictor1 * OFFENSIVE_WORTH) + (predictor2 * DEFENSIVE_WORTH) + (predictor3 * SPECIAL_WORTH) + (predictor4 * HOME_WORTH) + (predictor5 * OVERALL_WORTH));
 	return (int)difference;
 }
-
-
+*/
+/*
 // function used to print to the terminal the name of both teams, which team won and the amount of points the winning team won by
 	// Example output: "Cincinnati beat Buffalo by 3"
 void printOutput(int differential, char* homeTeamName, char* visitingTeamName) {
@@ -229,8 +232,8 @@ void printOutput(int differential, char* homeTeamName, char* visitingTeamName) {
 		printf("%s beat %s by %d \n", visitingTeamName, homeTeamName, abs(differential));
 	}
 }
-
-
+*/
+/*
 // function used to update the total number of games predicted and if the home team is predicted to win,
 	// update the number of home teams predicted to win
 void update(int differential, int* totalGames, int* homeWins) {
@@ -243,8 +246,8 @@ void update(int differential, int* totalGames, int* homeWins) {
 		*homeWins = *homeWins + 1;
 	}
 }
-
-
+*/
+/*
 // function used to print a summary of all the football games this program was used to predict the results for.
 	// This function calculates the percentage of games that home teams are predicted to win and 
 		// display that percentage (to 2 decimal places) along with the total number of games this program tried to predict
@@ -252,7 +255,7 @@ void printSummary(int totalGames, int homeWins) {
 	double homeWinPercentage = (((double)homeWins / totalGames) * 100);
 	printf("\nOf %d games, %.2f%% were won by the home team \n\n\n\n", totalGames, homeWinPercentage);
 }
-
+*/
 
 
 /*
