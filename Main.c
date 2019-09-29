@@ -56,7 +56,7 @@
 
 int main() {
 	
-	/* ---------------------------------------------------- VARIABLE DECLARATIONS ----------------------------------------------------- */
+	/* ------------------------------------------------ VARIABLE DECLARATIONS ------------------------------------------------- */
 	// Character Pointer variables to store the file names
 	char* fileName1 = "football1.txt";
 	char* fileName2 = "football2.txt";
@@ -80,7 +80,7 @@ int main() {
 	// int counter variables to store the total number of games predicted and the number of predicted home team wins
 	int totalGames = 0;
 	int homeWins = 0;
-	/* ------------------------------------------------ END OF VARIABLE DECLARATIONS -------------------------------------------------- */
+	/* -------------------------------------------- END OF VARIABLE DECLARATIONS ---------------------------------------------- */
 
 	// opening the files in read mode and assigning them to the file pointer variables
 	fileInput1 = fopen(("%c", fileName1), "r");
@@ -105,7 +105,7 @@ int main() {
 	}
 
 
-	/* ------------------------------------------- WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF ------------------------------------------ */
+	/* --------------------------------------- WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF -------------------------------------- */
 	// infinite while loop that will only exit when the EOF (End Of File) 
 		// of the file is reached
 	while (!feof(fileInput1)) {
@@ -131,7 +131,7 @@ int main() {
 			// depending on the results of the prediction, increment the number of home teams predicted to win
 		update(differential, &totalGames, &homeWins);
 	}
-	/* ---------------------------------------- END OF WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF -------------------------------------- */
+	/* ------------------------------------ END OF WHILE LOOP TO LOOP THROUGH FILE UNTIL EOF ---------------------------------- */
 
 	// Call the printSummary method to print the final line of output (total number of games predicted and 
 		// the percentage of those games the home team is predicted to win)
